@@ -136,27 +136,32 @@ class GameScene extends Phaser.Scene {
     preload () 
     {
         //  - doors
-        this.load.spritesheet('door', 'assets/sprites/door.png', 
+        this.load.spritesheet('door', 'assets/sprites/powers/door.png', 
             { frameWidth: 27, frameHeight: 75 }
         );
 
         //  - encres
-        this.load.spritesheet('encre', 'assets/sprites/pot_encre.png',
+        this.load.spritesheet('encre', 'assets/sprites/inks/pot_encre.png',
             { frameWidth: 32, frameHeight: 32 }
         );
 
         //  - openings
-        this.load.spritesheet('opening', 'assets/sprites/opening.png', 
+        this.load.spritesheet('opening', 'assets/sprites/powers/opening.png', 
             { frameWidth: 27, frameHeight: 75 }
         );
 
         // - pouvoir
-        this.load.spritesheet('feather', 'assets/sprites/feathers.png', 
+        this.load.spritesheet('feather', 'assets/sprites/powers/feathers.png', 
             { frameWidth: 32, frameHeight: 32 }
         );
 
-        // - BOSS
-        this.load.spritesheet('absorption', 'assets/sprites/absorption.png', 
+        // - ENNEMIES
+        this.load.spritesheet('spider', 'assets/sprites/ennemies/Spider.png', 
+            { frameWidth: 32, frameHeight: 32 }
+        );
+
+        // - BOSSES
+        this.load.spritesheet('absorption', 'assets/sprites/bosses/absorption.png', 
             { frameWidth: 64, frameHeight: 32 }
         );
     }
@@ -244,13 +249,34 @@ class GameScene extends Phaser.Scene {
                 frameRate: 10,
                 repeat: 0
             });
+
+            // ENNEMIES ANIMS :
+            // - SPIDER
+            this.anims.create({
+                key: 'idle_spider',
+                frames: this.anims.generateFrameNumbers('spider', { start: 0, end: 4 }),
+                frameRate: 5,
+                repeat: -1
+            });
+            this.anims.create({
+                key: 'walk_spider',
+                frames: this.anims.generateFrameNumbers('spider', { frames: [9,10,11,12,13,14] }),
+                frameRate: 5,
+                repeat: -1
+            });
         }
     }
 
     update () 
     {
         // ENNEMY MANAGER HERE (FOR NOW)
-        
+        if (this.ennemies.children.entries.length > 0) {
+            this.ennemies.children.iterate(function (child) {
+                var sprite = child.texture.key;
+                child.anims.play('walk_' + sprite, true);
+                console.log()
+            });
+        }
 
         // PLAYER MANAGER HERE (FOR NOW)
         if (this.player.visual.y == 630) {

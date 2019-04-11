@@ -19,12 +19,12 @@ class Sc_UI extends Phaser.Scene {
     preload()
     {
         // - Nombres
-        this.load.spritesheet('nombre', 'assets/sprites/nombre.png',
+        this.load.spritesheet('nombre', 'assets/sprites/ui/nombre.png',
             { frameWidth: 24, frameHeight: 24 }
         );
 
         //  - pouvoir
-        this.load.spritesheet('pouvoir_ui', 'assets/sprites/pouvoir_ui.png',
+        this.load.spritesheet('pouvoir_ui', 'assets/sprites/ui/pouvoir_ui.png',
             { frameWidth: 25, frameHeight: 25 }
         );
         //  - palette
@@ -33,10 +33,10 @@ class Sc_UI extends Phaser.Scene {
             { frameWidth: 25, frameHeight: 25 }
         );
         */
-        this.load.spritesheet('encre_ui', 'assets/sprites/encre_ui_bis.png',
+        this.load.spritesheet('encre_ui', 'assets/sprites/ui/encre_ui_bis.png',
             { frameWidth: 32, frameHeight: 32 }
         );
-        this.load.spritesheet('color_ui', 'assets/sprites/encre_color.png',
+        this.load.spritesheet('color_ui', 'assets/sprites/inks/encre_color.png',
             { frameWidth: 32, frameHeight: 32 }
         );
     }

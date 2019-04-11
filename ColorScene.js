@@ -48,12 +48,18 @@ class Sc_blanc extends GameScene
         for(i=0;i<this.saved_obj.encres.length;i++) {
             var encre = this.saved_obj.encres[i];
             this.encres.create(encre.x, encre.y, 'encre', encre.f)
-                .setName(encre.id);
+                .setName(encre.id)
+                .setSize(16, 18)
+                .setOffset(8, 8);
         }
         // ennemies
         for(i=0;i<this.saved_obj.ennemies.length;i++) {
-            var ennemy = this.saved_obj.ennemies.length[i];
-            this.
+            var ennemy = this.saved_obj.ennemies[i];
+            this.ennemies.create(ennemy.x, ennemy.y, ennemy.sprite)
+                .setName(ennemy.id)
+                .setSize(12, 8)
+                .setOffset(10, 24)
+                .setScale(2);
         }
         
         let ourGame = this;
